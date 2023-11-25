@@ -4,10 +4,10 @@ using namespace std;
 
 
 int main(){
-    char a[10];
-    char b[20];
-    cin>>a; // cant read white spaces
-    cout<<a;
+    // char a[10];
+    // char b[20];
+    // cin>>a; // cant read white spaces
+    // cout<<a;
     //=======> solutions <============
     char temp = cin.get(); //input buffer
     int len{1};
@@ -18,7 +18,7 @@ int main(){
     }
     
 
-   
+   cout<<"\nlength is :"<<len;
     
     return 0;
 }
