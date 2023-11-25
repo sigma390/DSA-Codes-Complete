@@ -3,26 +3,23 @@ using namespace std;
 
 int largestSubrraySum(int arr[],int n){
 
-    int prefixArr[n] = {0};
-    prefixArr[0]= arr[0];
-    for (int i = 1; i < n; i++)
-    {
-       prefixArr[i] = prefixArr[i-1] + arr[i];
-    }
     
 
     int largestSum{0};
+    int currSum{0};
 
     for (int i = 0; i < n; i++)
     {
-        
-        for(int j = i; j < n; j++)
+        currSum = currSum+arr[i];
+        if (currSum<0)
         {
-          int subsum = i>0?prefixArr[j] - prefixArr[i-1]:prefixArr[j];
-            largestSum = max(largestSum,subsum);
+            currSum = 0;
+        }
+        
+            largestSum = max(largestSum,currSum);
             
         }
-    }
+    
 return largestSum;  
 }
 
