@@ -1,11 +1,8 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-
-
 int main(){
-        //any array 
-
+        //any array
         char route[1000];
         cin.getline(route,1000);
         int x{0};
@@ -15,18 +12,13 @@ int main(){
             switch (route[i])
             {
             case 'N': y++;
-                
                 break;
             case 'S': y--;
-                
                 break;
             case 'E': x++;
-                
                 break;
             case 'W': x--;
-                
                 break;
-
             default:
                 break;
             }
@@ -37,7 +29,6 @@ int main(){
         {
             while(y--){
                 cout<<'S';
-
             }
             while (x--)
             {
@@ -49,7 +40,6 @@ int main(){
         {
             while(y++){
                 cout<<'N';
-
             }
             while (x--)
             {
@@ -61,7 +51,6 @@ int main(){
         {
             while(y--){
                 cout<<'S';
-
             }
             while (x++)
             {
@@ -73,13 +62,11 @@ int main(){
         {
             while(y++){
                 cout<<'N';
-
             }
             while (x++)
             {
                 cout<<'W';
             }
-        }
-        
+        }  
     return 0;
 }
