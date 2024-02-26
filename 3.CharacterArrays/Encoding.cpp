@@ -40,7 +40,7 @@ string Encoding(string str){
 
 int main(){
 
-    string s = "aaabbcccdd";
+    string s = "aaabbcccdd"; //input string
     string a = Encoding(s);
     cout<<a<<endl;
 
