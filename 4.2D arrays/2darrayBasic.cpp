@@ -17,8 +17,6 @@ void print(int arr[][100], int m, int n){
 }
 
 
-
-
 int main(){
 
     int m,n;
