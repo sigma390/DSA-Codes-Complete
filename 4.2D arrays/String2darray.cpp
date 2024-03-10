@@ -16,6 +16,7 @@ int main(){
     cout<<nums[i]<<endl;
     // to print individual letter 
     cout <<nums[i][1];
+    //github sucks
 
 
 
