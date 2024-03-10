@@ -18,6 +18,7 @@ int main(){
     cout <<nums[i][1];
     //github sucks
 
+//yes
 
 
     return 0;
