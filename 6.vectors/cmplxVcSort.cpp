@@ -12,10 +12,10 @@ int calcTotalMrks(vector<int>marks)
 }
 
 
-bool compare(pair<string, vector<int>>s1,pair<string, vector<int>>s2){
+bool compare(pair<string,pair<string, vector<int>>>s1,pair<string,pair<string, vector<int>>>s2){
 
-    vector<int>m1 = s1.second;
-    vector<int>m2 = s2.second;
+    vector<int>m1 = s1.second.second;
+    vector<int>m2 = s2.second.second;
     return calcTotalMrks(m1)> calcTotalMrks(m2);
 
 }
@@ -25,16 +25,21 @@ bool compare(pair<string, vector<int>>s1,pair<string, vector<int>>s2){
 
 int main(){
 
-    vector<pair<string,vector<int>>> Student_marks = {
-        {"Omkar",{100,95,98}},
-        {"Anisha",{78,98,65}},
-        {"Rohan",{77,56,89}}
+    vector<pair< string, pair<string,vector<int>>>> Student_marks = {
+        {"Git",{"Omkar",{100,95,98}}},
+        {"Cummins",{"Anisha",{78,98,65}}},
+        {"Yc",{"Rohan",{77,56,89}}}
     };
 
     sort(Student_marks.begin(),Student_marks.end(),compare);
     for (auto s : Student_marks)
     {
-        cout<<s.first<<"-"<<calcTotalMrks(s.second)<<endl;
+       
+        
+            cout<<s.first<<"-"<<s.second.first<<"-"<<calcTotalMrks(s.second.second)<<endl;
+        
+        
+        
     }
 
      return 0;
