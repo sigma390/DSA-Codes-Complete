@@ -5,7 +5,7 @@ int fact(int n){
     //base case 
     if (n==0)
     {
-        return 1;
+        return 1; //rec
     }
     return n*fact(n-1);
     
