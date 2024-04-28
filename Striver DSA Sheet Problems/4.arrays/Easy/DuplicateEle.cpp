@@ -7,6 +7,7 @@ int isDuplicate(vector<int> &arr, int n) {
 
     int i = 0;
     for (auto it = arr.begin() + 1; it != arr.end(); it++) {
+        
         if (arr[i] != *it) {
             i++;
             arr[i] = *it; 
