@@ -9,6 +9,7 @@ vector<int> countFrequency(int n,vector<int> &nums){
 
 
      unordered_map<int, int> countMap;
+     sort(nums.begin(), nums.end());
      vector<int>res;
      for(auto x : nums){
          if(countMap.count(x)==0){
@@ -31,7 +32,7 @@ vector<int> countFrequency(int n,vector<int> &nums){
 int main(){
 
     vector<int> arr = {
-        1,2,3,3,2,4
+      11, 14,8, 3 ,12, 14 ,1 ,7, 4, 3 
     };
     int n = arr.size();
 
