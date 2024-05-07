@@ -4,6 +4,7 @@ using namespace std;
 
 void subsets(char *input, char *output , int i , int j){
 //base case
+
     if (input[i]=='\0')
     {
         output[j]='\0';
@@ -25,5 +26,7 @@ int main(){
     char output[100];
     cin>>input;
     subsets(input,output,0,0);
+    
+    
     return 0;
 }
