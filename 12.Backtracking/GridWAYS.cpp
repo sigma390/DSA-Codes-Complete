@@ -18,7 +18,7 @@ int gridways(int m, int n , int rows , int columns){
     }
 
     int ans{0};
-    ans = gridways(m,n,rows+1,columns)+gridways(m,n,rows,columns+1);
+    ans = gridways(m,n,rows+1,columns)+gridways(m,n,rows,columns+1)+gridways(m,n,rows+1,columns+1) ; // only Top down movement if , all movements allowed 
     return ans;
     
 
