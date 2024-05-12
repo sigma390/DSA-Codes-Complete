@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+void PrintRAT(int n){
+    for (int row = 1;row<=n;row++){
+        for(int col=n;col>=row;col--){
+            cout<<"*"<<" ";
+        }
+        cout<<"\n";
+    }
+}
+
+
+int main(){
+    PrintRAT(5);
+    return 0;
+}
