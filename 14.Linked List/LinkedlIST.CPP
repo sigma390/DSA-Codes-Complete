@@ -10,6 +10,7 @@ int main(){
     l.push_front(10);
     l.push_front(11);
     l.pus_back(12);
+    l.Insert(123,1);
 
 
     Node*head = l.begin();
