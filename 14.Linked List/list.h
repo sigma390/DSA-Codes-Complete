@@ -23,6 +23,7 @@ public:
     Node *begin(){
         return head;
     }
+    //destructor down below
     ~List() {
         while (head != nullptr) {
             Node* temp = head;
