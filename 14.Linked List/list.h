@@ -71,6 +71,8 @@ public:
             }
             
             Node * n = new Node(data);
+            n->next = temp->next;
+            temp->next = n;
             
         }   
     }
