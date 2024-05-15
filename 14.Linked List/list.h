@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 class List;
 class Node {
     int data;
@@ -9,6 +10,15 @@ public:
     Node(int d) : data(d), next(nullptr) {}
     int getData(){
         return data;
+    }
+    //destructor for Node as Well
+    ~Node(){
+        if (next!=NULL)
+        {
+            delete next;
+        }
+        cout<<"Deleting Node With data"<<data<<endl;
+        
     }
 
     friend class List;
@@ -50,11 +60,10 @@ public:
     }
     //destructor down below
     ~List() {
-        while (head != nullptr) {
-            Node* temp = head;
-            head = head->next;
-            delete temp;
-        }
+       if(head!=NULL){
+        delete head;
+        head = NULL;
+       }
     }
 
     // Push front
