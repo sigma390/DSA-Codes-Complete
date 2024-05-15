@@ -127,11 +127,23 @@ public:
         
 
     }
-
+    //Recursive Search
     int recursiveSearch(int k){
         int idx = searchHelper(head, k);
-        return idx
-;    }
+        return idx;  
+        }
+
+    //POP front
+
+    void Pop_Front(){
+        Node *tmp = head;
+        head = head->next;
+         tmp->next = NULL;
+         delete tmp;
+    }
+
+
+
 
 
 
