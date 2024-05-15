@@ -17,7 +17,7 @@ public:
         {
             delete next;
         }
-        cout<<"Deleting Node With data"<<data<<endl;
+       
         
     }
 
@@ -142,6 +142,7 @@ public:
          delete tmp;
     }
 
+    
 
 
 
