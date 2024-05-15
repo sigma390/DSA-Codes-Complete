@@ -20,8 +20,27 @@ class List {
 
 
 
-    int searchHelper(Node *start, int idx){
-        return -1;
+    int searchHelper(Node *start, int k){
+        //base 
+        if(start==NULL){
+            return -1;
+        }
+        //normal
+        if(start->data==k){
+            return 0;
+        }
+        //recursive case
+        int idxx = searchHelper(start->next, k);
+        if(idxx==-1){
+            return -1;
+
+        }
+        else{
+            return idxx+1;
+        }
+
+
+
     }
 
 public:
@@ -99,6 +118,11 @@ public:
         
 
     }
+
+    int recursiveSearch(int k){
+        int idx = searchHelper(head, k);
+        return idx
+;    }
 
 
 

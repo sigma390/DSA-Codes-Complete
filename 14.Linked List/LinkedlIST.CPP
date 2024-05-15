@@ -12,6 +12,7 @@ int main(){
     l.pus_back(12);
     l.Insert(123,1);
     cout<<l.Search(10)<<endl;
+    cout<<l.recursiveSearch(10)<<endl;
 
 
     Node*head = l.begin();
