@@ -18,6 +18,12 @@ class List {
     Node* head;
     Node* tail;
 
+
+
+    int searchHelper(Node *start, int idx){
+        return -1;
+    }
+
 public:
     List() : head(nullptr), tail(nullptr) {}
     Node *begin(){
@@ -76,4 +82,25 @@ public:
             
         }   
     }
+
+    //normal search
+    int Search(int k){
+        Node * tmp = head;
+        int idx = 0;
+        //iterate 
+        while (tmp!=NULL){
+            if(tmp->data==k){
+                return idx;
+            }
+            idx++;
+            tmp = tmp->next;
+        }
+        return -1;
+        
+
+    }
+
+
+
+
 };
