@@ -28,13 +28,21 @@ int main(){
 //     cout<<"Second Occurance at :"<<index<<endl;
 //    }
 //all Occurances
+int cnt{0};
   int index{0};
    while (index!=-1)
    {
     index = s.find(y, index+1);
+    if(index==-1){
+        cnt = cnt;
+    }
+    else{
+        cnt++;
+    }
     
     cout<<index<<endl;
    }
+   cout<<cnt;
    
    
    
