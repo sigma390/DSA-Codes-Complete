@@ -42,6 +42,8 @@ string unk(string s){
 
 int main(){
     string s = "abcabed";
+    string s1 = "prateekbhaiya";
     cout<<unk(s);
+    cout<<unk(s1);
     return 0;
 }
