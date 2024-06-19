@@ -3,6 +3,8 @@ using namespace std;
 //link https://leetcode.com/problems/sliding-subarray-beauty/submissions/1293689765/
 
 
+//https://leetcode.com/discuss/study-guide/3630462/Top-20-Sliding-Window-Problems-for-beginners
+
 
 vector<int> getSubarrayBeauty(vector<int>& nums, int k, int x) {
     vector<int> result;
