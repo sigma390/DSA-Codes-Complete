@@ -16,7 +16,7 @@ public:
         left = NULL;
         right = NULL;
     };
-    ~Node();
+   
 };
 
 //functional ApproaCH  ]
@@ -24,6 +24,14 @@ public:
 Node* buildTree(){
     int d ;
     cin>>d;
+    //if d == -1 return null
+    if (d==-1)
+    {
+        return NULL;
+    }
+    
+
+
     //create New node
     Node *newNode = new Node(d);
     //make Recursive Call on both sides 
@@ -32,10 +40,24 @@ Node* buildTree(){
 
     return newNode;
 }
+void printPreorder(Node *root){
+    if (root==NULL)
+    {
+        return;
+    }
+    cout<<root->data<<" ";
+    printPreorder(root->left);
+    printPreorder(root->right);
 
+    
+}
 
 int main()
 {
+    //Build tree
+    Node * root = buildTree();
+    //print
+    printPreorder(root);
 
 
     return 0;
