@@ -22,13 +22,61 @@ class Complex
 
 };
 
+//Counter Operator OverLoading prefix and Postfix
+class Counter
+{
+private:
+    /* data */
+    int cnt;
+
+public:
+    //constructor
+    Counter():cnt(0){};
+
+    //get Counter 
+    int getCount(){
+        return cnt;
+    }
+    //Overloading
+
+    //prefix
+    Counter& operator++(){
+        ++cnt;
+        return *this;
+        
+        
+        
+
+    }
+    //postfix
+    Counter operator++(int){
+        Counter temp = *this;
+        cnt++;
+        return temp;
+
+    }
+
+};
+
+
+
 
 
 int main(){
-   Complex a =  Complex(2,3);
+    //+ operator Overloading !!!
+      Complex a =  Complex(2,3);
       Complex b =  Complex(4,5);
       Complex c = a+b;
-      c.display();
+    c.display();
+
+    //++ operator Overloading
+    Counter x;
+    cout<<"Initially Count Value : "<<x.getCount()<<endl;
+    ++x;
+    cout<<"After Pre Increment : "<<x.getCount()<<endl;
+    x++;
+    cout<<"After Post Increment : "<<x.getCount()<<endl;
+    
 
     return 0;
 }
