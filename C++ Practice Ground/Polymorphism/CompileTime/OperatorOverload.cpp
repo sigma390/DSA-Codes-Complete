@@ -16,7 +16,14 @@ class Complex
 
     //operator Overloading
     Complex operator+(Complex c){
-        return Complex(r+c.r , i+c.i);
+        Complex c3 = Complex(r+c.r , i+c.i); 
+        return c3;
+    }
+    Complex operator-(Complex X){
+        float a = r-X.r ;
+        float b = i-X.i;
+        Complex res = Complex(a,b);
+        return res;
     }
 
 
@@ -67,7 +74,9 @@ int main(){
       Complex a =  Complex(2,3);
       Complex b =  Complex(4,5);
       Complex c = a+b;
+      Complex d = a-b;
     c.display();
+    d.display();
 
     //++ operator Overloading
     Counter x;
