@@ -5,6 +5,7 @@ int main()
 {
     int a{0}, b{0}, c{0};
     cin >> a >> b >> c;
+
     if (a > b and a > c)
     {
         cout << "A is Greatest" << endl;
