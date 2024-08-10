@@ -11,63 +11,95 @@ public:
     Node(int d) : data(d), left(nullptr), right(nullptr) {}
 };
 
-// building a Tree
+// Building a Tree (Recursive Method)
 Node *build()
 {
     int data;
-
     cin >> data;
-    Node *newNode = new Node(data);
     if (data == -1)
         return nullptr;
-    // make Recursive Call on both sides
+
+    Node *newNode = new Node(data);
     newNode->left = build();
     newNode->right = build();
 
     return newNode;
 }
-// Print Level order
 
+// Print Level Order
 void levelOrderPrint(Node *root)
 {
+    if (!root)
+        return; // Handle case where root is nullptr
 
-    // queue of Type Node*
     queue<Node *> q;
-    // satrting From top
     q.push(root);
-    q.push(NULL);
+    q.push(nullptr); // Marker for end of level
 
-    // check q is empty and do accordingly
     while (!q.empty())
     {
         Node *tmp = q.front();
-        if (tmp == NULL)
-        {
+        q.pop();
 
+        if (tmp == nullptr)
+        {
             cout << endl;
-            q.pop();
             if (!q.empty())
-            {
-                /* code */
-                q.push(NULL);
-            }
+                q.push(nullptr); // Add marker for next level
         }
         else
         {
-            q.pop();
             cout << tmp->data << " ";
-            // push left and Right Children into Queue
             if (tmp->left)
                 q.push(tmp->left);
             if (tmp->right)
                 q.push(tmp->right);
         }
     }
-    return;
+}
+
+// Build Tree Using Level Order Input
+Node *build_level()
+{
+    int d;
+    cin >> d;
+    if (d == -1)
+        return nullptr;
+
+    Node *root = new Node(d);
+    queue<Node *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        Node *curr = q.front();
+        q.pop();
+
+        int c1, c2;
+        cin >> c1 >> c2;
+
+        if (c1 != -1)
+        {
+            curr->left = new Node(c1);
+            q.push(curr->left);
+        }
+        if (c2 != -1)
+        {
+            curr->right = new Node(c2);
+            q.push(curr->right);
+        }
+    }
+    return root;
 }
 
 int main()
 {
-    Node *root = build();
+    // Choose one of the following methods to build the tree
+    // Node *root = build();       // Recursive method
+    Node *root = build_level(); // Level order method
+
     levelOrderPrint(root);
+
+    // In a real application, consider adding code to delete the tree to avoid memory leaks
+    return 0;
 }
