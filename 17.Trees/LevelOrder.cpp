@@ -92,6 +92,17 @@ Node *build_level()
     return root;
 }
 
+// Calculate Height Of tree
+int heightOfTree(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    // calculate ledt and Right heights recur
+    int h1 = heightOfTree(root->left);
+    int h2 = heightOfTree(root->right);
+    return max(h1, h2) + 1;
+}
+
 int main()
 {
     // Choose one of the following methods to build the tree
@@ -99,6 +110,7 @@ int main()
     Node *root = build_level(); // Level order method
 
     levelOrderPrint(root);
+    cout << heightOfTree(root) << endl;
 
     // In a real application, consider adding code to delete the tree to avoid memory leaks
     return 0;
