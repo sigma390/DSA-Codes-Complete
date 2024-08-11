@@ -103,6 +103,22 @@ int heightOfTree(Node *root)
     return max(h1, h2) + 1;
 }
 
+// Diamter of tree
+
+int diameterOfTree(Node *root)
+{
+    if (root == NULL)
+        return 0;
+
+    int lh = heightOfTree(root->left);
+    int rh = heightOfTree(root->right);
+
+    int ldiameter = diameterOfTree(root->left);
+    int rdiameter = diameterOfTree(root->right);
+
+    return max(lh + rh + 1, max(ldiameter, rdiameter));
+}
+
 int main()
 {
     // Choose one of the following methods to build the tree
