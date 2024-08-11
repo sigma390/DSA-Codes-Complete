@@ -75,7 +75,7 @@ Node *build_level()
         Node *curr = q.front();
         q.pop();
 
-        int c1, c2;
+        int c1, c2; // children of current
         cin >> c1 >> c2;
 
         if (c1 != -1)
@@ -110,13 +110,12 @@ int diameterOfTree(Node *root)
     if (root == NULL)
         return 0;
 
-    int lh = heightOfTree(root->left);
-    int rh = heightOfTree(root->right);
+    int d1 = heightOfTree(root->left) + heightOfTree(root->right); // height at each Node
 
-    int ldiameter = diameterOfTree(root->left);
-    int rdiameter = diameterOfTree(root->right);
+    int d2 = diameterOfTree(root->left);  // left diameter Recursive Caall
+    int d3 = diameterOfTree(root->right); // right diameter Recursive Caall
 
-    return max(lh + rh + 1, max(ldiameter, rdiameter));
+    return max(d1, max(d2, d3));
 }
 
 int main()
