@@ -41,6 +41,22 @@ void printInOrder(Node *root)
     printInOrder(root->right);
 }
 
+bool search(Node *root, int k)
+{
+    if (root == NULL)
+        return false;
+    if (root->key == k)
+        return true;
+    if (root->key > k)
+    {
+        return search(root->left, k);
+    }
+    else
+    {
+        return search(root->right, k);
+    }
+}
+
 int main()
 {
     Node *root = NULL;
@@ -50,4 +66,5 @@ int main()
         root = insert(root, x);
     }
     printInOrder(root);
+    cout << search(root, 22);
 }
