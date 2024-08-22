@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
 
-    Heap h(10, "min");
+    Heap h(10, "max");
     int n;
     cin >> n;
     int x;
@@ -18,6 +18,7 @@ int main()
     }
     h.print();
     h.pop();
+    cout << "\n";
     h.print();
 
     return 0;
