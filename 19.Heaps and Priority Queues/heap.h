@@ -3,87 +3,95 @@ using namespace std;
 
 class Heap
 {
-
     vector<int> arr;
     string heapType;
 
-    // heapify method
-    void heapify(int i)
-    {
-        int left = 2 * i;
-        int right = 2 * i + 1;
-        int min = i;
-
-        // comparison
-        if (left < arr.size() && compare(arr[left], arr[min]))
-            min = left;
-        if (right < arr.size() && compare(arr[right], arr[min]))
-        {
-            min = right;
-        }
-        while (min != i)
-        {
-            swap(arr[i], arr[min]);
-            heapify(min);
-        }
-    }
-
-public:
+    // Helper function to compare elements based on heap type
     bool compare(int a, int b)
     {
         if (heapType == "min")
         {
-            return a < b;
+            return a > b; // For min-heap, return true if parent > child
         }
         else
         {
-            return a > b; // max heap
+            return a < b; // For max-heap, return true if parent < child
         }
     }
-    Heap(int defaultSize = 10, string hType)
+
+    // Heapify method to maintain heap property
+    void heapify(int i)
     {
-        arr.reserve(defaultSize + 1);
-        arr.push_back(-1); // Oth index is inaccessible
-        this->heapType = hType;
-        // last element arr.size()-1
+        int left = 2 * i;      // Index of left child
+        int right = 2 * i + 1; // Index of right child
+        int minOrMax = i;      // Index of the minimum or maximum element
+
+        // Compare with left child
+        if (left < arr.size() && compare(arr[minOrMax], arr[left]))
+        {
+            minOrMax = left;
+        }
+        // Compare with right child
+        if (right < arr.size() && compare(arr[minOrMax], arr[right]))
+        {
+            minOrMax = right;
+        }
+
+        // If the current element is not in its correct position, swap and heapify further
+        if (minOrMax != i)
+        {
+            swap(arr[i], arr[minOrMax]);
+            heapify(minOrMax);
+        }
     }
+
+public:
+    // Constructor to initialize the heap with a type (min or max)
+    Heap(int defaultSize = 10, string hType = "min")
+    {
+        arr.reserve(defaultSize + 1); // Reserve space for heap elements
+        arr.push_back(-1);            // Placeholder for the 0th index (not used)
+        this->heapType = hType;       // Set the heap type (min or max)
+    }
+
+    // Method to push a new element into the heap
     void Push(int d)
     {
-        // add data to end od heap
+        // Add data to the end of the heap
+        arr.push_back(d);
+        int idx = arr.size() - 1; // Index of the newly added element
+        int parent = idx / 2;     // Index of its parent
 
-        arr.push_back(d); // just at start
-        // now checking Of index and Parent
-        int idx = arr.size() - 1;
-        int parent = idx / 2;
-        while (idx > 1 and compare(arr[idx], arr[parent]))
+        // Fix the heap property by swapping with the parent if necessary
+        while (idx > 1 && compare(arr[parent], arr[idx]))
         {
             swap(arr[parent], arr[idx]);
-            // change idx to parent
-            idx = parent;
-            parent = parent / 2;
+            idx = parent;        // Move up to the parent
+            parent = parent / 2; // Update parent index
         }
     }
 
-    // get top most element
+    // Method to get the topmost element (min or max depending on heap type)
     int top()
     {
-        return arr[1];
+        return arr[1]; // Return the root element
     }
 
-    // remove method
+    // Method to remove the topmost element from the heap
     void pop()
     {
-        // swap first and last
-        int idx = arr.size() - 1;
-        swap(arr[1], arr[idx]);
-        // remove last element
-        arr.pop_back();
-        // now heapify the root
-    }
+        int idx = arr.size() - 1; // Index of the last element
+        swap(arr[1], arr[idx]);   // Swap the root with the last element
+        arr.pop_back();           // Remove the last element
 
-    // empty Method
-    bool isEmpty()
+        // Heapify the root element to maintain the heap property
+        heapify(1);
+    }
+    void print()
     {
-        return arr.size() == 1;
+        for (auto x : arr)
+        {
+            cout << x << " , ";
+        }
     }
 };
