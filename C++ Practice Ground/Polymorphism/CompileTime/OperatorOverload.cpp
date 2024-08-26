@@ -17,6 +17,9 @@ class Complex
     //operator Overloading
     Complex operator+(Complex c){
         Complex c3 = Complex(r+c.r , i+c.i); 
+
+        //or int real = r + c.r; int img = i+ c.i
+        
         return c3;
     }
     Complex operator-(Complex X){
