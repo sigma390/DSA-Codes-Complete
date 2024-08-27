@@ -69,17 +69,40 @@ vector<int> Optimal(vector<int> arr, int sum)
 
 // Most Optimal Approach Using sets
 
+vector<int> MostOptimal(vector<int> arr, int sum)
+{
+    vector<int> res;
+    unordered_set<int> x;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        int ele = sum - arr[i];
+        if (x.find(ele) != x.end())
+        {
+            res.push_back(arr[i]);
+            res.push_back(ele);
+        }
+        x.insert(arr[i]);
+    }
+    return res;
+}
+
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5, 6};
     vector<int> result = bruteForce(arr, 5);
     vector<int> result2 = Optimal(arr, 5);
+    vector<int> result3 = MostOptimal(arr, 5);
     for (auto x : result)
     {
         cout << x << " ";
     }
     cout << endl;
     for (auto x : result)
+    {
+        cout << x << " ";
+    }
+    cout << endl;
+    for (auto x : result3)
     {
         cout << x << " ";
     }
