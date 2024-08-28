@@ -15,6 +15,13 @@ int gcd(int a, int b)
     }
     return a;
 }
+// LCM
+
+int lcm(int a, int b)
+{
+    int res = (a / gcd(a, b)) * b;
+    return res;
+}
 
 int main()
 {
@@ -23,5 +30,6 @@ int main()
     cin >> num1 >> num2;
     int gcd_value = gcd(num1, num2);
     cout << "GCD of " << num1 << " and " << num2 << " is: " << gcd_value << endl;
+    cout << "LCM is :" << lcm(num1, num2);
     return 0;
 }
