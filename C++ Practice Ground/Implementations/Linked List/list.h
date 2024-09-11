@@ -103,4 +103,22 @@ public:
             temp->next = n;
         }
     }
+
+    int search(int k)
+    {
+        if (head == nullptr)
+            return -1;
+        Node *temp = head;
+        int idx = 0;
+        while (temp != nullptr)
+        {
+            if (temp->data == k)
+            {
+                return idx;
+            }
+            idx++;
+            temp = temp->next;
+        }
+        return idx;
+    }
 };
