@@ -64,9 +64,12 @@ public:
             head = tail = n;
         }
         // if not
-        Node *n = new Node(data);
-        n->next = head;
-        head = n;
+        else
+        {
+            Node *n = new Node(data);
+            n->next = head;
+            head = n;
+        }
     }
 
     // push back
@@ -77,9 +80,12 @@ public:
             Node *n = new Node(data);
             head = tail = n;
         }
-        Node *n = new Node(data);
-        tail->next = n;
-        tail = n;
+        else
+        {
+            Node *n = new Node(data);
+            tail->next = n;
+            tail = n;
+        }
     }
 
     // insert at Given Position;
@@ -103,7 +109,7 @@ public:
             temp->next = n;
         }
     }
-
+    // search Node or Key
     int search(int k)
     {
         if (head == nullptr)
@@ -120,5 +126,69 @@ public:
             temp = temp->next;
         }
         return idx;
+    }
+
+    // pop Front
+    void pop_front()
+    {
+        Node *temp = head;
+        head = head->next;
+        temp->next = nullptr;
+        delete temp;
+    }
+
+    // Display list
+    void Display(Node *head)
+    {
+        Node *temp = head;
+        while (temp != nullptr)
+        {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+    }
+
+    int getLength(Node *head)
+    {
+        Node *temp = head;
+        int cnt;
+        while (temp != nullptr)
+        {
+            cnt++;
+            temp = temp->next;
+        }
+        return cnt;
+    }
+
+    void deleteAt(Node *head, int pos)
+    {
+        // if List is Empty
+        if (head == nullptr)
+            cout << "Empty list " << endl;
+        ;
+
+        // if Pos oute of Bound
+        if (pos > getLength(head) - 1)
+            cout << "out of Bound !!!!" << endl;
+
+        Node *temp = head;
+        // first Element
+        if (pos == 0)
+        {
+            head = head->next;
+            temp->next = nullptr;
+            delete temp;
+        }
+        else
+        {
+            for (int i = 0; i < pos - 1; i++)
+            {
+                temp = temp->next;
+            }
+            Node *nodeToDelete = temp->next;
+            temp->next = temp->next->next;
+            nodeToDelete->next = nullptr;
+            delete nodeToDelete;
+        }
     }
 };
