@@ -20,5 +20,6 @@ int main()
 {
     Dog *d1 = new Dog();
     d1->sound();
+    delete d1;
     return 0;
 }
