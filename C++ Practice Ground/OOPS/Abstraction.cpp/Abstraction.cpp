@@ -18,8 +18,9 @@ public:
 
 int main()
 {
-    Dog *d1 = new Dog();
+    Dog *d1 = new Dog(); // Allote Memoryt on heap
+
     d1->sound();
-    delete d1;
+    delete d1; // free Memory
     return 0;
 }
