@@ -8,9 +8,7 @@ class Node
     Node *next;
 
 public:
-    Node(int d) : data(d), next(nullptr) {
-
-                  };
+    Node(int d) : data(d), next(nullptr) {};
 
     // destructor
     ~Node()

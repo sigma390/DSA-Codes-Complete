@@ -3,7 +3,15 @@ using namespace std;
 
 int main()
 {
-    char x[50];
+    string str;
+    getline(cin, str);
+    // good for Word Extraction
+    stringstream ss(str);
+    string word;
+    while (ss >> word)
+    {
+        cout << word << endl;
+    }
 
     return 0;
 }
