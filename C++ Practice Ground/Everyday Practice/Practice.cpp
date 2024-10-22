@@ -13,16 +13,34 @@ void Display(map<int, int> &arr)
         cout << x.first << " " << x.second << endl;
     }
 }
+
+void groupIt(vector<string> &fruits)
+{
+    map<int, string> mp;
+    for (auto x : fruits)
+    {
+        if (mp.find(x.length()) != mp.end())
+        {
+            mp[x.length()] += "," + x;
+        }
+        else
+        {
+            mp.insert({x.length(), x});
+        }
+    }
+    for (auto x : mp)
+    {
+        cout << x.first << " " << x.second << endl;
+    }
+}
+
 int main()
 {
     map<int, int> arr;
+    vector<string> fruits = {"apple", "banana", "orange", "grapefruit", "kiwi", "mango", "strawberry"};
 
-    arr.insert({1, 15});
-    arr.insert({4, 25});
-    arr.insert({2, 23});
-    arr.insert({3, 24});
-    arr.insert({5, 26});
+    // Display the fruits grouped by length
+    groupIt(fruits);
 
-    Display(arr);
     return 0;
 }
