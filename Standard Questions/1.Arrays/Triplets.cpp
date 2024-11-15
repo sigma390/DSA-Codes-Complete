@@ -52,7 +52,7 @@ vector<vector<int>> triplets(vector<int> arr, int sum)
 
 int main()
 {
-    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 15};
     int sum = 18;
     vector<vector<int>> res = triplets(arr, sum);
     for (auto &&i : res)
