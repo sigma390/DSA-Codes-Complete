@@ -1,45 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> bruteForce(vector<int> arr, int sum)
-
+vector<int> BruteForce(vector<int> &arr, int sum)
 {
-
-    vector<int> ans;
-    for (int i = 0; i <= arr.size() - 2; i++)
+    vector<int> res;
+    for (int i = 0; i < arr.size(); i++)
     {
         for (int j = i + 1; j < arr.size(); j++)
         {
-            if (arr[j] + arr[i] == sum)
+            if (arr[i] + arr[j] == sum)
             {
-                ans.push_back(arr[i]);
-                ans.push_back(arr[j]);
+                res.push_back(arr[i]);
+                res.push_back(arr[j]);
             }
         }
     }
-    return ans;
+    return res;
 }
 
-// sort and Search method
+bool BinSearch(vector<int> ans, int x)
 
-// binray Search Helper Function
-
-bool binary_search(vector<int> ans, int x)
 {
     sort(ans.begin(), ans.end());
-    int low = 0;
-    int high = ans.size() - 1;
-    while (low <= high)
+    int s = 0, e = ans.size() - 1;
+
+    while (s <= e)
     {
-        int mid = low + (high - low) / 2;
+
+        int mid = s + (e - s) / 2;
 
         // If x is greater, ignore left half
         if (ans[mid] < x)
-            low = mid + 1;
+            s = mid + 1;
 
         // If x is smaller, ignore right half
         else if (ans[mid] > x)
-            high = mid - 1;
+            e = mid - 1;
 
         // x is present at mid
         else
@@ -56,7 +52,7 @@ vector<int> Optimal(vector<int> arr, int sum)
 
     for (int i = 0; i < ans.size(); i++)
     {
-        if (binary_search(ans, sum - ans[i]))
+        if (BinSearch(ans, sum - ans[i]))
         {
             res.push_back(arr[i]);
             res.push_back(sum - ans[i]);
@@ -65,45 +61,45 @@ vector<int> Optimal(vector<int> arr, int sum)
     return res;
 }
 
-// Most Optimal Approach Using sets
-
 vector<int> MostOptimal(vector<int> arr, int sum)
 {
+    unordered_set<int> st;
     vector<int> res;
-    unordered_set<int> x;
     for (int i = 0; i < arr.size(); i++)
     {
-        int ele = sum - arr[i];
-        if (x.find(ele) != x.end())
+        int x = sum - arr[i];
+        if (st.find(x) != st.end())
         {
             res.push_back(arr[i]);
-            res.push_back(ele);
+            res.push_back(x);
+            break;
         }
-        x.insert(arr[i]);
+        st.insert(arr[i]);
     }
     return res;
 }
 
 int main()
 {
-    vector<int> arr = {1, 2, 3, 9, 6, 8};
-    vector<int> result = bruteForce(arr, 4);
-    vector<int> result2 = Optimal(arr, 4);
-    vector<int> result3 = MostOptimal(arr, 4);
-    for (auto x : result)
-    {
-        cout << x << " ";
-    }
-    cout << endl;
-    for (auto x : result)
-    {
-        cout << x << " ";
-    }
-    cout << endl;
-    for (auto x : result3)
+    vector<int> arr{1, 2, 3, 9, 6, 8};
+    int sum = 4;
+    vector<int> res1 = BruteForce(arr, sum);
+    vector<int> res2 = Optimal(arr, sum);
+    vector<int> res3 = MostOptimal(arr, sum);
+    for (auto x : res1)
     {
         cout << x << " ";
     }
 
+    cout << "\n=======" << endl;
+    for (auto x : res2)
+    {
+        cout << x << " ";
+    }
+    cout << "\n=======" << endl;
+    for (auto x : res3)
+    {
+        cout << x << " ";
+    }
     return 0;
 }
