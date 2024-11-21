@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+string rev(string s)
+{
+    stack<string> stk;
+}
+
 int main()
 {
     string s = "Omakr";
@@ -11,3 +16,6 @@ int main()
     cout << s;
     return 0;
 }
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
