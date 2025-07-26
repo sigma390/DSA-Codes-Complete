@@ -64,6 +64,38 @@ int kadaneOptimised(int *arr, int n)
     return maxSum;
 }
 
+vector<int> KadaneOptimisedSubarry(int *arr, int n)
+{
+    int maxSum = INT_MIN;
+    int currSum = 0;
+    vector<int> Subarray;
+    int start = 0, end = 0;
+    int tempStart = 0;
+    for (int i = 0; i < n; i++)
+    {
+        currSum += arr[i];
+        if (currSum < 0)
+        {
+            currSum = 0;       // Reset the Current Sum
+            tempStart = i + 1; // Move the Pointer
+        }
+
+        if (maxSum < currSum)
+        {
+            maxSum = currSum;
+            start = tempStart;
+            end = i;
+        }
+    }
+
+    // make AN array here
+    for (int i = start; i <= end; i++)
+    {
+        Subarray.push_back(arr[i]);
+    }
+    return Subarray;
+}
+
 int main()
 {
     int arr[] = {
@@ -79,4 +111,10 @@ int main()
     }
 
     cout << "\n This is max Subarray Sum otimised Version : " << kadaneOptimised(arr, 6);
+    vector<int> optimisedSubarry = KadaneOptimisedSubarry(arr, 6);
+    cout << "\n=================> \n";
+    for (int i = 0; i < optimisedSubarry.size(); i++)
+    {
+        cout << optimisedSubarry[i] << ", ";
+    }
 }
