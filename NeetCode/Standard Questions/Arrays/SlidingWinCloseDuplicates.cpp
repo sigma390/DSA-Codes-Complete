@@ -24,6 +24,21 @@ bool isCloseDuplicatesBruteForce(vector<int> arr, int k)
 
     return !closeDuplicates.empty();
 }
+
+// Optimised Approach using Sliding Window
+bool isCloseDuplicatesSlidingWindow(vector<int> arr, int k)
+{
+    unordered_map<int, int> Visited;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (Visited.find(arr[i]) != Visited.end() && i - Visited[arr[i]] <= k)
+        {
+            return true; // Found a close duplicate
+        }
+        Visited[arr[i]] = i; // Update the index of the current element
+    }
+    return false; // No close duplicates found
+}
 int main()
 {
     vector<int> arr = {1, 2, 3, 2, 3, 3};
